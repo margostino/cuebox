@@ -1,0 +1,8 @@
+#x: "d"
+
+#x:
+#  foo: 4
+
+#x: true
+
+x: "john"
