@@ -8,9 +8,6 @@ import (
 	// import from a nested dir with package name
 	"github.com/foo/bar/multi:hello"
 	"github.com/foo/bar/multi:world"
-
-	"github.com:common"
-
 	// import from this module
 	"github.com/margostino/cuebox/a"
 )
@@ -26,4 +23,4 @@ vals: {
 }
 
 some_r_def: B.#SomeDef
-country: common.#CountryId
+//country: common.#CountryId
