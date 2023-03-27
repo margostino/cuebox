@@ -1,6 +1,6 @@
 package common
 
-#TeamId: "authentication" | "security" | "database"
+#TeamId: "auth" | "security" | "database"
 
 //#Team: {
 //	id: #TeamId

@@ -1,18 +1,19 @@
 package common
 
 import (
-	"github.com/margostino/cuebox:common"
+	//"github.com/margostino/cuebox:common"
+	"github.com/margostino/cuebox/common"
 )
 
-other: thing: #TeamId
+//other: thing: common.#TeamId
 
-//#Team: {
-//	id: #TeamId
-//	name: string
-//	email: string
-//}
-//
-//[...#Team]
+#Team: {
+	id: common.#TeamId
+	name: string
+	email: string
+}
+
+[...#Team]
 
 
 
