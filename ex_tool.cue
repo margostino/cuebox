@@ -5,6 +5,7 @@ import (
 	//"tool/exec"
 	"tool/http"
 	//"tool/file"
+	"encoding/json"
 )
 
 // moved to the data.cue file to show how we can reference "pure" Cue files
@@ -50,6 +51,6 @@ command: prompter: {
 	print: cli.Print & {
 		//text: echo.stdout // write the output to the terminal since we captured it previously
 		//text: ping.response.status
-		text: info.response.body
+		text: json.Unmarshal(info.response.body).team
 	}
 }
