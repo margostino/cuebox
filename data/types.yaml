@@ -1,0 +1,8 @@
+spec:
+  kind: "Homo Sapiens"
+  name:
+    first: "Jane"
+    last:  "Doe"
+
+  minimum: 11
+  maximum: 10
