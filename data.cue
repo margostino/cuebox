@@ -1,7 +1,7 @@
 package root
 
 city: "Amsterdam"
-team: "some"
+teamx: "some"
 
 //projects: [
 //	{name: "first project"},

@@ -1,5 +1,6 @@
 cue vet ./data/types.yaml ./cue/types.cue
 cue import ./data/teams.yaml -o teams-schema.cue
-cue cmd prompter
+cue cmd validate
+cue cmd --inject team="Security" validate
 
 cue export data.cue --out json
