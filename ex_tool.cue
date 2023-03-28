@@ -6,7 +6,7 @@ import (
 	"tool/http"
 	"tool/file"
 	//"encoding/json"
-	//"encoding/yaml"
+	"encoding/yaml"
 )
 
 // moved to the data.cue file to show how we can reference "pure" Cue files
@@ -46,8 +46,12 @@ command: prompter: {
 				filename: filepath
 				contents: string
 			}
-			print: cli.Print & {
-				text: read.contents // an inferred dependency
+			for _, team in yaml.Unmarshal(read.contents) {
+				(team.name): {
+					print: cli.Print & {
+						text: team.name // an inferred dependency
+					}
+				}
 			}
 		}
 	}
@@ -68,9 +72,9 @@ command: prompter: {
 	//	}
 
 	// also starts after echo, and concurrently with append
-//	print: cli.Print & {
-//		//text: echo.stdout // write the output to the terminal since we captured it previously
-//		//text: ping.response.status
-//		text: json.Unmarshal(info.response.body).team
-//	}
+	//	print: cli.Print & {
+	//		//text: echo.stdout // write the output to the terminal since we captured it previously
+	//		//text: ping.response.status
+	//		text: json.Unmarshal(info.response.body).team
+	//	}
 }
