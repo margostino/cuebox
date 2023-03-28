@@ -47,7 +47,7 @@ command: prompter: {
 				contents: string
 			}
 			print: cli.Print & {
-				text: "read.contents" // an inferred dependency
+				text: read.contents // an inferred dependency
 			}
 		}
 	}
