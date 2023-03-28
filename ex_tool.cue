@@ -4,8 +4,9 @@ import (
 	"tool/cli"
 	//"tool/exec"
 	"tool/http"
-	//"tool/file"
-	"encoding/json"
+	"tool/file"
+	//"encoding/json"
+	//"encoding/yaml"
 )
 
 // moved to the data.cue file to show how we can reference "pure" Cue files
@@ -32,6 +33,25 @@ command: prompter: {
 	//		stdout: string // capture stdout, don't print to the terminal
 	//	}
 
+	list: file.Glob & {
+		glob: "data/teams.yaml"
+	}
+
+	// comprehend tasks for each file, also an inferred dependency
+	for _, filepath in list.files {
+		// make a unique key for the tasks per item
+		(filepath): {
+			// and have locally referenced dependencies
+			read: file.Read & {
+				filename: filepath
+				contents: string
+			}
+			print: cli.Print & {
+				text: "read.contents" // an inferred dependency
+			}
+		}
+	}
+
 	info: http.Get & {
 		url: "http://localhost:10000/teams/" + team
 		response: {
@@ -48,9 +68,9 @@ command: prompter: {
 	//	}
 
 	// also starts after echo, and concurrently with append
-	print: cli.Print & {
-		//text: echo.stdout // write the output to the terminal since we captured it previously
-		//text: ping.response.status
-		text: json.Unmarshal(info.response.body).team
-	}
+//	print: cli.Print & {
+//		//text: echo.stdout // write the output to the terminal since we captured it previously
+//		//text: ping.response.status
+//		text: json.Unmarshal(info.response.body).team
+//	}
 }
