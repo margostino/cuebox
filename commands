@@ -4,3 +4,7 @@ cue cmd validate
 cue cmd --inject team="Security" validate
 
 cue export data.cue --out json
+
+
+TOOLS:
+cue cmd --inject file=teams.yml validate
